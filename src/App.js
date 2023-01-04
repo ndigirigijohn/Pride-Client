@@ -1,9 +1,15 @@
-import './App.css';
+import './App.scss';
+//react footer
+import Home from './Components/Home/Home';
+import Footer from './Components/Footer/Footer';
+
 
 function App() {
   return (
     <div className="App">
-      hello
+      <Home/>
+      <Footer/>
+
     </div>
   );
 }
