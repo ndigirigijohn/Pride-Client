@@ -8,7 +8,7 @@ import CarouselRender from './Carousel/CarouselRender';
 
 function Home() {
   return (
-    <div>
+    <div className='home'>
       <NavBar/>
       <CarouselRender/>
 
