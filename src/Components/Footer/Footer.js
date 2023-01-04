@@ -5,7 +5,6 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { AiFillYoutube } from 'react-icons/ai';
 import { FaTiktok } from 'react-icons/fa';
-import Reviews from './Reviews/Reviews';
 import './Footer.scss'
 
 
@@ -14,7 +13,6 @@ function Footer() {
   return (
     <div className='Footer'>
       <Foot/>
-      <Reviews/>
       <Feedback/>
       <div className="social">
         <a href="https://instagram.com"><AiFillInstagram/></a>
