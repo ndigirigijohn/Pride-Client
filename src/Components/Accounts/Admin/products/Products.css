@@ -1,0 +1,45 @@
+.admin_products {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 100vh;
+    gap: 5px;
+    overflow-y: scroll;
+}
+.admin_product, .admin_product_head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 30px;
+    padding: 5px 0;
+    
+    display: grid;
+    margin: 0 20px ;
+    border-radius: 10px;
+    border: 1px solid #c9104e;
+}
+.admin_product_head {
+    color: #c9104e;
+}
+.admin_product {
+    min-height: 100px;
+}
+.product_img img {
+    max-height: 50px;
+
+}
+.admin_product button{
+    background-color: azure;
+    padding: 5px;
+    min-width: 80px;
+    margin: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+.admin_product button:hover {
+    background-color: #ca225a;
+    color: white;
+}
+

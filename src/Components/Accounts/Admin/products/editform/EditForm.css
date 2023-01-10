@@ -1,0 +1,69 @@
+.edit_form {
+    background-color: blue;
+    position: fixed;
+    top: 20px;
+    left: 35vw;
+    height: 70vh;
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 2px solid #c9104e;
+    border-style: double;
+    padding: 5px;
+    border-radius: 30px;
+}
+.edit_form .close_form {
+    text-align: right;
+}
+.edit_form .close_form button {
+    background-color: #c9104e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    font-size: 120%;
+    font-weight: bold;
+    cursor: pointer;
+}
+.edit_form div{
+    width: 100%;
+}
+.edit_form div input {
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #c9104e;
+    margin: 5px 0;
+    padding: 5px;
+    outline: none;
+
+}
+#product_description {
+    border:  1px solid #c9104e;
+}
+.edit_form .submit_product {
+    text-align: left;
+    padding-left: 50px;
+    margin-top: 5px;
+}
+.submit_product button {
+    background-color: #c9104e;
+    color: white;
+    border: none;
+    height: 30px;
+    font-size: 120%;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.submit_product button:hover {
+        transform: scale(1.05);
+
+}
+
+.editform_heading {
+   color: #c9104e;
+}

@@ -1,0 +1,30 @@
+.confirm {
+    position: fixed;
+    top: 10vh;
+    left: 40vw;
+    width: 20vw;
+    height: 20vh;
+    background-color:#c9104e;
+    color: white;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 110%;
+    font-weight: bold;
+    border-radius: 6px;
+}
+.confirm button {
+    background-color: azure;
+    padding: 5px;
+    min-width: 80px;
+    margin: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.confirm button:hover {
+    background-color: #ca225a;
+    color: white;
+}

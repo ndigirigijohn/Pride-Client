@@ -1,0 +1,16 @@
+.admin_nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    
+
+}
+.admin_nav h2{
+    color: brown;
+}
+
+.admin_nav_contents {
+    font-size: 150%;
+
+}

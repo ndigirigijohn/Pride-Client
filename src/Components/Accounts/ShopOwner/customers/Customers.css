@@ -1,0 +1,23 @@
+.admin_customers {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+}
+.admin_customer, .admin_customer_head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 30px;
+    padding: 5px 0;
+    gap: 10px;
+    display: grid;
+    margin: 0 20px ;
+    border-radius: 10px;
+    border: 1px solid #c9104e;
+}
+.admin_customer_head {
+    color: #c9104e;
+}
+.admin_customer {
+    height: 60px;
+}

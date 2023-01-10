@@ -1,0 +1,60 @@
+/*Personal Data*/
+
+.personal_data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.personal_data div{
+    width: 90%;
+    padding: 3%;
+}
+.personal_data .data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3%;
+}
+.personal_data .data div{
+    text-align: left;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 110%;
+}
+.data span {
+    color: #c9104e;
+}
+
+/*Update password*/
+.update_password {
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.update_password input {
+    width: 50%;
+    padding: 1%;
+    border: 1px solid #c9104e;
+    border-radius: 5px;
+    font-size: 110%;
+}
+.update_password button {
+    width: 20%;
+    padding: 1%;
+    border: 1px solid #c9104e;
+    border-radius: 5px;
+    font-size: 110%;
+    background-color: #c9104e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.update_password button:hover {
+    background-color: #f5f5f5;
+    color: #c9104e;
+}
