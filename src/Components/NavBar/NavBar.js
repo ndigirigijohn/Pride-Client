@@ -43,7 +43,7 @@ function NavBar() {
       </Link>
       </div>
       <div className="account">
-      <Link to='/account' className='acc'>
+      <Link to='/accounts' className='acc'>
         <FcBusinesswoman/>
       </Link>
 
@@ -73,7 +73,7 @@ function NavBar() {
       <Link to='/fms'>FIND SUPPLEMENT</Link>
       </div>
       <div className="">
-      <Link to='/account' className=''>
+      <Link to='/accounts' className=''>
         ACCOUNT
       </Link>
       </div>

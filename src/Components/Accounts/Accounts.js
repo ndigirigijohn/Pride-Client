@@ -6,8 +6,10 @@ import ShopOwner from './ShopOwner/ShopOwner'
 
 
 function Accounts() {
+    /*
   const users = ['ADMIN', 'CUSTOMER', 'SHOPOWNER']
   const user= users[0]
+
   const USER =()=>{
     if(user === 'ADMIN'){
       return <Admin/>
@@ -19,12 +21,12 @@ function Accounts() {
     return <ShopOwner/>
   }
   }
-
+*/
   
   return (
-    <div>{
-      USER
-      }</div>
+    <div>
+      <h3>Accounts</h3>
+</div>
   )
 }
 

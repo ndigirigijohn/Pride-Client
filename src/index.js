@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //import components for routing
-import Home from './Components/Home/Home';
 import Cart from './Components/Cart/Cart';
 import FMS from './Components/FMS/FMS';
 import Accounts from './Components/Accounts/Accounts';
@@ -26,7 +25,6 @@ root.render(
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<App/>} />
-          <Route exact path="/" component={<Home/>} />
           <Route exact path="/cart" component={<Cart/>} />
           <Route exact path="/fms" component={<FMS/>} />
           <Route exact path="/accounts" component={<Accounts/>} />
