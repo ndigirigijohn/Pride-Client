@@ -14,6 +14,13 @@ import Customer from './Components/Accounts/Customer/Customer';
 import ShopOwner from './Components/Accounts/ShopOwner/ShopOwner';
 import Admin from './Components/Accounts/Admin/Admin';
 
+//admin routes
+import Dashboard from './Components/Accounts/Admin/Dashboard/Dashboard';
+import Orders from './Components/Accounts/Admin/Orders/Orders';
+import ProductsA from './Components/Accounts/Admin/Products/Products';
+import Offers from './Components/Accounts/Admin/Offers/Offers';
+import Stock from './Components/Accounts/Admin/Stock/Stock';
+
 
 
 //redux imports
@@ -50,7 +57,13 @@ root.render(
           <Route  path="/cart" element={<Cart/>} />
           <Route  path="/fms" element={<FMS/>} />
 
-           <Route path="/accounts" element={<ELEMENT/>} />
+           <Route path="/accounts" element={<ELEMENT/>} >
+            <Route path="/accounts/dashboard" element={<Dashboard/>} />
+            <Route path="/accounts/orders" element={<Orders/>} />
+            <Route path="/accounts/productsa" element={<ProductsA/>} />
+            <Route path="/accounts/offers" element={<Offers/>} />
+            <Route path="/accounts/stock" element={<Stock/>} />
+           </Route>
 
 
         </Routes>

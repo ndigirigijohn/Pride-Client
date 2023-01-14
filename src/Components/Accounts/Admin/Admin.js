@@ -31,7 +31,7 @@ function Admin() {
             <Link to='/admin/customers'><FiPieChart/><p>Customers</p></Link>
           </div>
           <div>
-            <Link to='/admin/products'><RiProductHuntFill/><p>Products</p></Link>
+            <Link to='/admin/productsa'><RiProductHuntFill/><p>Products</p></Link>
           </div>
           <div>
             <Link to='/admin/stock'><AiOutlineStock/><p>Stock</p></Link>
