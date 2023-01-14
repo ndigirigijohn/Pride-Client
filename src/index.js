@@ -9,6 +9,12 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './Components/Cart/Cart';
 import FMS from './Components/FMS/FMS';
 import Accounts from './Components/Accounts/Accounts';
+//accounts
+import Customer from './Components/Accounts/Customer/Customer';
+import ShopOwner from './Components/Accounts/ShopOwner/ShopOwner';
+import Admin from './Components/Accounts/Admin/Admin';
+
+
 
 //redux imports
 import { Provider } from 'react-redux';
@@ -18,6 +24,22 @@ import store from "./redux/store/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// const user = JSON.parse(localStorage.getItem('user')).role;
+const user= 'shopowner';
+const ELEMENT =()=>{
+  if(user === 'customer'){
+    return <Customer/>
+  }
+  else if(user === 'shopowner'){
+    return <ShopOwner/>
+  }
+  else if(user === 'admin'){
+    return <Admin/>
+  }
+  else{
+    return <Accounts/>
+  }
+}
 root.render(
   <React.StrictMode>
    <Provider store={store}>
@@ -25,9 +47,12 @@ root.render(
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<App/>} />
-          <Route exact path="/cart" component={<Cart/>} />
-          <Route exact path="/fms" component={<FMS/>} />
-          <Route exact path="/accounts" component={<Accounts/>} />
+          <Route  path="/cart" element={<Cart/>} />
+          <Route  path="/fms" element={<FMS/>} />
+
+           <Route path="/accounts" element={<ELEMENT/>} />
+
+
         </Routes>
     </BrowserRouter>
     </Provider>
