@@ -1,0 +1,79 @@
+.fms_component{
+    width: 100vw;
+    height: 100vh;
+
+}
+.fms_nav {
+    background-color: #171822;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+.fms_div {
+    background-color: #F5F5F5;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6vh;
+    padding-top: 10vh;
+}
+.prev ,.close{
+    background-color: white;
+    display: flex;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 45%;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+.fms_div .fms_button{
+    background-color: #171822;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+.fms_div p{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search_box{
+    width: 200px;
+    height: 30px;
+    border-radius: 50px;
+    border: 0.5px solid black;
+    outline: none;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.search_box:focus{
+    border: 1px solid #171822;    
+}
+
+.search_box .select, .search_box input {
+    border: 0px;
+    outline: none;
+    height: 20px;
+    margin: 2px;
+}
+.search_icon{
+    color: #171822;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Footer from '../footer/Footer'
-import './Cart.css'
+import Footer from '../Footer/Footer'
+import './Cart.scss'
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useState } from 'react';
 import { useDispatch, } from "react-redux";
@@ -9,7 +9,6 @@ import { changeCount } from "../../redux/slices/countSlice";
 
 import { useSelector } from "react-redux";
 import { useNavigate} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios'
 
 function Cart() {
@@ -251,19 +250,7 @@ const handleCheckout=()=>{
       <button className='' onClick={()=>{navigate('/auth/login')}}>Login</button>
 
     </div>
-    <ToastContainer
-    className={'toast'}
-        style={{width:"300px", height:"50px"}}
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        />
+
         </>
 
   )
