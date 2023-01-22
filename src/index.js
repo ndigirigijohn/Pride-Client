@@ -21,6 +21,9 @@ import ProductsA from './Components/Accounts/Admin/Products/Products';
 import Offers from './Components/Accounts/Admin/Offers/Offers';
 import Stock from './Components/Accounts/Admin/Stock/Stock';
 
+//product page
+import ProductPage from './Components/Products/ProductPage/ProductPage';
+
 
 
 //redux imports
@@ -64,6 +67,7 @@ root.render(
             <Route path="/accounts/offers" element={<Offers/>} />
             <Route path="/accounts/stock" element={<Stock/>} />
            </Route>
+           <Route path= '/product/:id' element={<ProductPage/>}/>
 
 
         </Routes>

@@ -1,0 +1,46 @@
+.Product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+    transition: all 0.3s ease-in-out;
+    background-color: #f2e1da1c;
+
+    &:hover{
+        background-color: #F2E1DA;
+    }
+    .link{
+        width: 100%;
+        height: 100%;
+    }
+    .image{
+        width: 100%;
+        height: 100%;
+
+        img{
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    }
+    .add{
+        button{
+            width: 100%;
+            height: 100%;
+            background-color: #F2E1DA;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #000;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover{
+                background-color: #000;
+                color: #F2E1DA;
+            }
+            
+        }
+    }
+}
