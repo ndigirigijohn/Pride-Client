@@ -1,0 +1,21 @@
+.Shop{
+    width: 100%;
+    .shop{
+        div{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .maps{
+            color: blue;
+        }
+    }
+}
+
+//mobile
+@media (max-width: 768px) {
+    .Shop {
+        .shop{
+        }
+    }
+}

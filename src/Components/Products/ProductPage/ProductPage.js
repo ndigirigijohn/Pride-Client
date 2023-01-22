@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import NavBar from '../../NavBar/NavBar'
 import './ProductPage.scss'
+import Shop from './Shop/Shop'
+import Footer from '../../Footer/Footer'
 
 function ProductPage() {
     const [text, setText]=useState("Add to Cart")
@@ -28,7 +30,7 @@ function ProductPage() {
         <NavBar/>
         <div className="burner">
         <div className="burner_links">
-          <Link to='/'>Home/</Link><Link to={'/'}>Products/</Link><Link to={`/products/${params.id}`}>{product.name}</Link>
+          <Link to='/'>Home/</Link><Link to={'/'}>Products/</Link><Link to={`/product/${id}`}>{product.name}</Link>
         </div>
       </div>
 
@@ -37,20 +39,28 @@ function ProductPage() {
             <h1>Loading...</h1>
             :
         <div className="product">
-            <div className="image">
+            <div className="image_detail">
+
+            <div className="image_container">
+                <div className="image">
                 <img src={product.image} alt={product.name} />
+
+
+                </div>
+
             </div>
             <div className="detail">
                 <div className="name">
-                    <p>{product.name}</p>
+                    <h2>{product.name}</h2>
 
                 </div>
                 <div className="current_rating">
+                    <h6>CURRENT RATINGS</h6>
                 </div>
                 <div className="price">
-                <p>
+                <h2>
                 KSH.  {(product.price).toLocaleString()}
-            </p>
+            </h2>
 
                 </div>
                 <div className="add">
@@ -63,16 +73,28 @@ function ProductPage() {
                             +</button>
                     </div>
                     <div className="add_button">
-                        <button>
+                        <button id='act'>
                             {text}
+
                         </button>
                     </div>
                 </div>
+                <div className="rate">
+                    <h6>RATE NOW</h6>
+                </div>
             </div>
-            <div className="details">
+            </div>
+
+            <div className="details_shop">
+                <div className="des">
+                    <h3>DESCRIPTION</h3>
+                    <p>{product.description}</p>
+                </div>
+                <Shop id={product.shopId}/>
             </div>
         </div>
         }
+        <Footer/>
 
     </div>
   )
