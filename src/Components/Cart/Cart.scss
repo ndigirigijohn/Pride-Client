@@ -65,6 +65,7 @@
     display: grid;
         grid-template-columns: 1fr 2fr 1fr  1fr 1fr 1fr 1fr ;
         padding: 5px;
+
 }
 .shopping_cart .cart_items .image{
     height: 50px;
@@ -259,8 +260,12 @@
         gap:1px;
         background-color: rgba(252, 10, 131, 0.116);
     }
+    .shopping_cart .cart_items .cart_item{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px;
+    }
    
-  }
-  @media screen and (max-width: 768px) {
-    
   }

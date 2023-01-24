@@ -1,0 +1,52 @@
+.signup, .login{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.signup h3{
+    color: #d42d49;
+    font-size: 25px;
+}
+.signup div{
+    width: 100%;
+}
+.signup input, .login input{
+    outline: none;
+    background-color: aliceblue;
+    font-size: 20px;
+    color: black;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px;
+}
+.submit{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.submit button{
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.submit .link{
+    border: 1px solid #d42d49;
+
+
+}
+.submit .active{
+    background-color:  #d42d49;
+
+
+}
+.to_home{
+    color: blue;
+    font-size: 10px;
+}

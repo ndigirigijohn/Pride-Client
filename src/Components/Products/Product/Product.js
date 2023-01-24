@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import { changeCart } from "../../../redux/slices/cartSlice";
+import { changeCount } from "../../../redux/slices/countSlice";
+
+
 
 
 
@@ -14,15 +17,30 @@ function Product({product}) {
 
     const dispatch = useDispatch();
     const [text, setText]=useState("Add to Cart")
+    const count = useSelector((state) => state.count);
+
 
     const addToCart=()=>{
         let cart1=cart
-        const data= product
+        const data= {
+          _id: product._id,
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          description: product.description,
+          countInStock: product.countInStock,
+          category: product.category,
+          identifier: product.identifier,
+          shopId: product.shopId,
+          count: 1,
+        }
         if(cart.length===0){
 
           cart1=[...cart1, data]
     
-          dispatch(changeCart(cart1)) 
+          dispatch(changeCart(cart1))
+          dispatch(changeCount(count+1))
+ 
           setText("Added")
 
         }
@@ -33,6 +51,8 @@ function Product({product}) {
             else{
               cart1=[...cart1, data]
               dispatch(changeCart(cart1)) 
+              dispatch(changeCount(count+1))
+
               setText("Added")
 
 

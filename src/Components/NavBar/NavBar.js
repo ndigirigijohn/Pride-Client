@@ -5,10 +5,13 @@ import { BsCartFill } from 'react-icons/bs';
 import { FcBusinesswoman } from 'react-icons/fc';
 import { BiMenu } from 'react-icons/bi';
 import {Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
+
 
 
 function NavBar() {
-//setOver
+  const count = useSelector((state) => state.count);
   const [over, setOver] = React.useState('none');
 
 
@@ -39,7 +42,7 @@ function NavBar() {
       </div>
       <div className="cart">
       <Link to='/cart'>
-      <div className='cart_dv'><BsCartFill/><div className='cart_span' >{'0'}</div></div>
+      <div className='cart_dv'><BsCartFill/><div className='cart_span' >{count}</div></div>
       </Link>
       </div>
       <div className="account">
@@ -59,7 +62,7 @@ function NavBar() {
       </div>
       <div className="cart">
       <Link to='/cart'>
-        <div className='cart_dv'><BsCartFill/><div className='cart_span' style={{backgroundColor:"white", color:'pink'}} >{'0'}</div></div>
+        <div className='cart_dv'><BsCartFill/><div className='cart_span' style={{backgroundColor:"white", color:'pink'}} >{count}</div></div>
       </Link>
       </div>
       <div onClick={()=>{

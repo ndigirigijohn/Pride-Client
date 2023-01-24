@@ -91,6 +91,14 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        .shop{
+            padding:0 10px;
+        }
+        .desc{
+            padding:0 10px;
+
+
+        }
     }
 
 }
@@ -131,7 +139,16 @@
 
                
             }
+            .detail{
+                padding: 10px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+        
+            }
             .details_shop{
+                padding: 10px;
                 width: 100%;
                 display: flex;
                 flex-direction: column;

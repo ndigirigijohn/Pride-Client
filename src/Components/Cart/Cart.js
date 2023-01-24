@@ -21,14 +21,26 @@ function Cart() {
   const [itemsCount, setItemCount]= useState(0)
   const [pop, setPop]= useState('pop_none')
   const[processing, setProcessing]= useState(false)
-  const user = JSON.parse(localStorage.getItem('user'))
+  // const user = JSON.parse(localStorage.getItem('user'))
   const [userItems, setUserItems]= useState([])
   const [name, setName]= useState('none')
+  const user = {
+    "_id": "5f9f1b0b0b9b2c0017b0b2a5",
+    "name": "customer2",
+    "email": "customer2@pride.com",
+    "deliveryLocation": "Nairobi",
+    "role": "CUSTOMER",
+    "phone": "254742734120",
+    "mpesaNumber": "254742734120"
+
+}
+
 
 
 
 useEffect(()=>{
   let items=cart;
+
   setTotal(0)
   let i =0;
   let tot=0
@@ -49,7 +61,6 @@ useEffect(()=>{
       setName("show")
       setUserItems(res.data.products)
     }).catch((err)=>{
-      console.log(err)
     })
 
   }
@@ -60,7 +71,7 @@ useEffect(()=>{
   const increment=(id,count )=>{
     const items=cart
     const newItems=items.map(item=>{
-      if(item.id===id){
+      if(item._id===id){
         return {...item, count: item.count+1}
       }
       return item
@@ -70,7 +81,7 @@ useEffect(()=>{
   const decrement=(id,count )=>{
     const items=cart
     const newItems=items.map(item=>{
-      if(item.id===id){
+      if(item._id===id){
         if(count>1){
           return {...item, count: item.count-1}
 
@@ -82,7 +93,7 @@ useEffect(()=>{
   }
   const remove = (id)=>{
     const items=cart
-    dispatch(changeCart(items.filter(item=>item.id!==id)))
+    dispatch(changeCart(items.filter(item=>item._id!==id)))
   }
   
   const removeAll = ()=>{
@@ -90,7 +101,6 @@ useEffect(()=>{
   }
 
 const shipping=30;
-console.log(cart)
 
 
 const handleCheckout=()=>{
@@ -105,15 +115,18 @@ const handleCheckout=()=>{
   const order={
     "userId":user._id,
     "name":user.name,
-    "phone":user.contact.phone,
-    "email":user.contact.email,
+    "phone":user.phone,
+    "email":user.email,
     "count":itemsCount,
     "shipping":shipping,
     "total":total+shipping,
+    "mpesaNo":user.mpesaNumber,
     "items":cart
 }
+    console.log("ORDER", order)
 
   axios.post('http://localhost:8080/orders/makeorder', order).then(res=>{
+
     
     dispatch(changeCart([]))
     setProcessing(false)
@@ -123,7 +136,6 @@ const handleCheckout=()=>{
     setProcessing(false)
     alert("Something went wrong")
   })
-  console.log(order)
 
 }
 
@@ -156,12 +168,9 @@ const handleCheckout=()=>{
 
                     </div>
                     <p>Name</p>
-                    <div className="values">
+                  <p>Price</p>
+
                   <p>Count</p>
-              </div>
-              <p className='price'>
-             <p>Price</p>
-              </p>
               <p className='total'>Total</p>
               <p className={name}>Matching</p>
               <button onClick={()=>{
@@ -173,16 +182,19 @@ const handleCheckout=()=>{
 
               {
                 cart.map((item)=>{
-                  return <div key={item.id} className='cart_item'>
+                  return <div key={item._id} className='cart_item'>
                     <div className="image">
                     <img src={item.image} alt={item.name} />
 
                     </div>
                     <p>{item.name}</p>
+                    <p className='price'>
+                  KSH.  {item.price}
+                  </p>
                     <div className="values">
                 <button onClick={
                   ()=>{
-                    increment(item.id, item.count)
+                    increment(item._id, item.count)
                   }
                 }  className="rm">
                     +
@@ -190,18 +202,16 @@ const handleCheckout=()=>{
                 <input onChange={(e)=>{
                 }} value={item.count} type={'number'} />
                 <button onClick={()=>{
-                  decrement(item.id, item.count)
+                  decrement(item._id, item.count)
                 }} className="add">
                     -
                 </button>
               </div>
-              <p className='price'>
-              {item.price}
-              </p>
-              <p className='total'>{item.price*item.count}</p>
+
+              <p className='total'>KSH. {item.price*item.count}</p>
               <p style={userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
               <button onClick={()=>{
-                remove(item.id)
+                remove(item._id)
               }} className='remove'>Remove</button>
 
 

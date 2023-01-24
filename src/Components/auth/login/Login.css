@@ -1,0 +1,9 @@
+.login{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.login h3{
+    color: #d42d49;
+    font-size: 25px;
+}
