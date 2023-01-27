@@ -12,9 +12,9 @@ function PersonalData() {
       </div>
       <div className="data">
         <div>
-        <p><span>Name</span>: {user.username}</p>
-        <p><span>Email</span> {user.contact.email}</p>
-        <p><span>Phone</span> {user.contact.phone}</p>
+        <p><span>Name</span>: {user.name}</p>
+        <p><span>Email</span> {user.email}</p>
+        <p><span>Phone</span> {user.phone}</p>
 
         </div>
         <div>

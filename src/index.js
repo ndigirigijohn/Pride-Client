@@ -26,7 +26,7 @@ import Favorites from './Components/Accounts/Customer/sections/Favorites';
 import PersonalData from './Components/Accounts/Customer/sections/PersonalData';
 import MySupplements from './Components/Accounts/Customer/sections/MySupplements';
 import DataUpdate from './Components/Accounts/Customer/sections/DataUpdate';
-
+import OrdersC from './Components/Accounts/Customer/sections/Orders';
 
 //product page
 import ProductPage from './Components/Products/ProductPage/ProductPage';
@@ -47,21 +47,24 @@ import store from "./redux/store/store";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// const user = JSON.parse(localStorage.getItem('user')).role;
-const user= 'customer';
+const user= JSON.parse(localStorage.getItem('user'));
 const ELEMENT =()=>{
-  if(user === 'customer'){
-    return <Customer/>
-  }
-  else if(user === 'shopowner'){
-    return <ShopOwner/>
-  }
-  else if(user === 'admin'){
-    return <Admin/>
-  }
-  else{
+  if(user===null){
     return <Accounts/>
   }
+
+
+  if(user.role === 'CUSTOMER'){
+    return <Customer/>
+  }
+  else if(user.role === 'shopowner'){
+    return <ShopOwner/>
+  }
+  else if(user.role === 'admin'){
+    return <Admin/>
+  }
+
+
 }
 root.render(
   <React.StrictMode>
@@ -73,7 +76,7 @@ root.render(
           <Route  path="/cart" element={<Cart/>} />
           <Route  path="/fms" element={<FMS/>} />
 
-           <Route path="/accounts" element={<ELEMENT/>} >
+           <Route path='/accounts' element={<ELEMENT/>} >
             {/* Admin */}
             <Route path="/accounts/dashboard" element={<Dashboard/>} />
             <Route path="/accounts/orders" element={<Orders/>} />
@@ -81,11 +84,11 @@ root.render(
             <Route path="/accounts/offers" element={<Offers/>} />
             <Route path="/accounts/stock" element={<Stock/>} />
             {/* customer */}
-          <Route index path='/account/orders' element={<Orders/>}/>
-          <Route path='/account/favorites' element={<Favorites/>}/>
-          <Route path='/account/personaldata' element={<PersonalData/>}/>
-          <Route path='/account/mysupplements' element={<MySupplements/>}/>
-          <Route path='/account/dataupdate' element={<DataUpdate/>}/>
+          <Route index path='/accounts/ordersc' element={<OrdersC/>}/>
+          <Route path='/accounts/favorites' element={<Favorites/>}/>
+          <Route path='/accounts/personaldata' element={<PersonalData/>}/>
+          <Route path='/accounts/mysupplements' element={<MySupplements/>}/>
+          <Route path='/accounts/dataupdate' element={<DataUpdate/>}/>
 
 
 

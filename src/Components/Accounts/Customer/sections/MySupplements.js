@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux";
-import { changeProduct } from "../../../redux/slices/productSlice";
-import Products from '../../products/Products'
+import { changeProduct } from "../../../../redux/slices/productSlice";
+import Products from '../../../Products/Products'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 

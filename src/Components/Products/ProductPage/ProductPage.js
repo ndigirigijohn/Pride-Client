@@ -29,6 +29,8 @@ function ProductPage() {
     
     const [product, setProduct] = useState(false)
     useEffect(()=>{
+            window.scrollTo(0, 0);
+        
         // console.log("id", id)
         axios.get(`http://localhost:8080/products/${id}`).then(
             (res)=>{
