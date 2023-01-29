@@ -13,6 +13,25 @@ import { useSelector } from "react-redux";
 function NavBar() {
   const count = useSelector((state) => state.count);
   const [over, setOver] = React.useState('none');
+  const user= JSON.parse(localStorage.getItem('user'));
+  const [url, setUrl] = React.useState('/auth/login');
+
+const route = ()=>{
+  console.log("user", user)
+  if(user===null){
+    setUrl('/auth/login')
+  }
+  if(user.role === 'CUSTOMER'){
+    setUrl('/customer')
+  }
+  else if(user.role === 'SHOPOWNER'){
+    setUrl('/shopowner')
+  }
+  else if(user.role === 'ADMIN'){
+
+    setUrl('/admin')  }
+
+}
 
 
   return (
@@ -46,7 +65,7 @@ function NavBar() {
       </Link>
       </div>
       <div className="account">
-      <Link to='/accounts' className='acc'>
+      <Link onClick={()=>route()} to={url} className='acc'>
         <FcBusinesswoman/>
       </Link>
 
@@ -76,7 +95,7 @@ function NavBar() {
       <Link to='/fms'>FIND SUPPLEMENT</Link>
       </div>
       <div className="">
-      <Link to='/accounts' className=''>
+      <Link onClick={()=>route()} to={url} className=''>
         ACCOUNT
       </Link>
       </div>
