@@ -15,24 +15,24 @@ function Dashboard() {
   const [productCount, setProductCount] =useState(0)
   const [shopCount, setShopCount] =useState(0)
   useEffect(() => {
-    axios.get('/api/admin/customers/count')
-    .then(res => setCustomerCount(res.data))
+    axios.get('http://localhost:8080/users/customer')
+    .then(res => setCustomerCount(res.data.length))
     .catch(err => console.log(err))
     axios.get('/api/admin/orders/count')
-    .then(res => setOrderCount(res.data))
+    .then(res => setOrderCount(res.data.length))
     .catch(err => console.log(err))
-    axios.get('/api/admin/products/count')
-    .then(res => setProductCount(res.data))
+    axios.get('http://localhost:8080/products')
+    .then(res => setProductCount(res.data.length))
     .catch(err => console.log(err))
-    axios.get('/api/admin/shops/count')
-    .then(res => setShopCount(res.data))
+    axios.get('http://localhost:8080/shops')
+    .then(res => setShopCount(res.data.length))
     .catch(err => console.log(err))
   }, [])
     
   return (
     <div className='dashboard'>
       <AdminNav title={"Dashboard"}/>
-      <div className="items">
+      <div className="admin_items">
         <Item text={"CUSTOMERS"} count={customerCount}/>
         <Item text={"ORDERS"} count={orderCount}/>
         <Item text={"PRODUCTS"} count={productCount}/>

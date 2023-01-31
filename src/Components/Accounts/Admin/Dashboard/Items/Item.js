@@ -3,7 +3,7 @@ import './Item.scss'
 
 function Item({text, count}) {
   return (
-    <div>
+    <div className='admin_item'>
         <div className="title">
             <p>{text}</p>
         </div>

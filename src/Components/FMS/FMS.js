@@ -32,13 +32,14 @@ const [optionsState, setOptionsState] = useState('all');
 useEffect(()=>{
   console.log(optionsState)
   if(flag){
-    axios.get(`http://localhost:8080/code/a/z/${code}`).then((res)=>{
+    axios.get(`http://localhost:8080/products/code/${code}`).then((res)=>{
       localStorage.setItem('skincode', JSON.stringify(code));
       dispatch(changeProduct(res.data))
 
     }
-
-    )
+    ).catch((err)=>{
+      console.log(err)
+    })
     if(user!==null){
       axios.put(`http://localhost:8080/users/set/${user._id}`, {code: code}).then((res)=>{
         console.log(res)

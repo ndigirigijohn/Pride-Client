@@ -13,7 +13,7 @@ import axios from 'axios'
 
 function Cart() {
   // let userCode=JSON.parse(localStorage.getItem('skincode'))
-  let userCode='1010'
+  let userCode=JSON.parse(localStorage.getItem('skincode'))||null
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,6 +38,8 @@ function Cart() {
 
 
 
+
+
 useEffect(()=>{
   let items=cart;
 
@@ -56,11 +58,12 @@ useEffect(()=>{
 
 
   if(userCode!=="" && userCode!==null){
-    axios.get(`http://localhost:8080/p/codes/g/${userCode}`).then((res)=>{
+    axios.get(`http://localhost:8080/codes/${userCode}`).then((res)=>{
       console.log(res.data.products)
       setName("show")
       setUserItems(res.data.products)
     }).catch((err)=>{
+      console.log(err)
     })
 
   }

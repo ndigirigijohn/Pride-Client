@@ -5,8 +5,8 @@ import {MdSpaceDashboard } from 'react-icons/md';
 import {AiOutlineShoppingCart } from 'react-icons/ai';
 import {FiPieChart } from 'react-icons/fi';
 import { RiProductHuntFill} from 'react-icons/ri';
-import { AiOutlineStock} from 'react-icons/ai';
-import { MdOutlineLocalOffer} from 'react-icons/md';
+import { AiOutlineShop} from 'react-icons/ai';
+import { FaPeopleCarry} from 'react-icons/fa';
 import {FiLogOut } from 'react-icons/fi';
 
 
@@ -34,10 +34,10 @@ function Admin() {
             <Link to='/admin/productsa'><RiProductHuntFill/><p>Products</p></Link>
           </div>
           <div>
-            <Link to='/admin/stock'><AiOutlineStock/><p>Stock</p></Link>
+            <Link to='/admin/shops'><AiOutlineShop/><p>Shops</p></Link>
           </div>
           <div>
-            <Link to='/admin/offers'><MdOutlineLocalOffer/><p>Offers</p></Link>
+            <Link to='/admin/owners'><FaPeopleCarry/><p>Shop Owners</p></Link>
           </div>
           <div>
               <Link

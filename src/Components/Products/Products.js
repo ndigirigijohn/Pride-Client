@@ -57,7 +57,7 @@ function Products() {
           return <Product key={product._id} product={product}/>
         })
         :
-        <h1>Page does not exist</h1>
+        <h1>No products</h1>
       }
 
 

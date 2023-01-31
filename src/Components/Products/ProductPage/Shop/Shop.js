@@ -44,7 +44,7 @@ function Shop({id}) {
                 </div>
                 <div className="maps">
                     
-                    <a href={shop.location}><span><FiMapPin/></span> GO WITH MAPS  </a>
+                    <a href={shop.location} target='_blank' rel="noreferrer" ><span><FiMapPin/></span> GO WITH MAPS  </a>
                 </div>
             </div>
         }

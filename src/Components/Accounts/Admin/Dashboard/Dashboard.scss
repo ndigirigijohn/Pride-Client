@@ -9,3 +9,10 @@
     gap: 2px;
     justify-content: center;
 }
+.admin_items{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 10px;
+
+}

@@ -4,21 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import Sequel from './Components/Sequel/Sequel';
 
 //import components for routing
 import Cart from './Components/Cart/Cart';
 import FMS from './Components/FMS/FMS';
 //accounts
 import Customer from './Components/Accounts/Customer/Customer';
-import ShopOwner from './Components/Accounts/ShopOwner/ShopOwner';
 import Admin from './Components/Accounts/Admin/Admin';
 
 //admin routes
 import Dashboard from './Components/Accounts/Admin/Dashboard/Dashboard';
 import Orders from './Components/Accounts/Admin/Orders/Orders';
 import ProductsA from './Components/Accounts/Admin/Products/Products';
-import Offers from './Components/Accounts/Admin/Offers/Offers';
-import Stock from './Components/Accounts/Admin/Stock/Stock';
+// import Shops from './Components/Accounts/Admin/Shops/Shops';
+// import Owners from './Components/Accounts/Admin/Owners/Owners';
+import Customers from './Components/Accounts/Admin/Customers/Customers';
 
 //customer routes
 import Favorites from './Components/Accounts/Customer/sections/Favorites';
@@ -62,8 +63,9 @@ root.render(
             <Route path="/admin/dashboard" element={<Dashboard/>} />
             <Route path="/admin/orders" element={<Orders/>} />
             <Route path="/admin/productsa" element={<ProductsA/>} />
-            <Route path="/admin/offers" element={<Offers/>} />
-            <Route path="/admin/stock" element={<Stock/>} />
+            <Route path="/admin/customers" element={<Customers/>} />
+
+            
 
 
 
@@ -82,6 +84,8 @@ root.render(
           <Route index path='/auth/login' element={<Login/>}/>
           <Route path='/auth/signup' element={<SignUp/>}/>
         </Route>
+
+        <Route path='/sequel' element={<Sequel/>}/>
 
 
 

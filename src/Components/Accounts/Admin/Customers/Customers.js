@@ -10,7 +10,7 @@ function Products() {
   const [customers, setCustomers] = useState([])
   useEffect(()=>{
 
-    axios.get(`https://prideserver.herokuapp.com/users/get/all`).then((res)=>{
+    axios.get(`http://localhost:8080/users/customer`).then((res)=>{
       console.log('Customers', res.data)
       setCustomers(res.data)
     })
@@ -60,13 +60,13 @@ function Products() {
                     {user._id}
                   </div>
                 <div className="name">
-                  {user.username}
+                  {user.name}
                 </div>
                 <div className="phone">
-                  {user.contact.phone}
+                  {user.phone}
                 </div>
                 <div className="email">
-                  {user.contact.email}
+                  {user.email}
   
                 </div>
                 <div className="category">

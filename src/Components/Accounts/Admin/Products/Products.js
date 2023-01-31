@@ -23,7 +23,7 @@ function Products() {
   const [products, setProducts] = useState([])
   useEffect(()=>{
 
-    axios.get(`http://localhost:8080/byPage/${page}/${limit}`).then((res)=>{
+    axios.get(`http://localhost:8080/products/page/${page+1}/limit/9`).then((res)=>{
       console.log('connected', res.data)
       setProducts(res.data)
     })
@@ -79,6 +79,7 @@ const confirmDelete = ()=>{
               </div>
              </div>
              {
+     
               products.map((product)=>{
                 return              <div className="admin_product">
                 <div className="product_img">
