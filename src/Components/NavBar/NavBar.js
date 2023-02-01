@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './NavBar.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsCartFill } from 'react-icons/bs';
@@ -15,23 +15,27 @@ function NavBar() {
   const [over, setOver] = React.useState('none');
   const user= JSON.parse(localStorage.getItem('user'));
   const [url, setUrl] = React.useState('/auth/login');
+  useEffect(()=>{
 
-const route = ()=>{
-  console.log("user", user)
-  if(user===null){
-    setUrl('/auth/login')
-  }
-  if(user.role === 'CUSTOMER'){
-    setUrl('/customer')
-  }
-  else if(user.role === 'SHOPOWNER'){
-    setUrl('/shopowner')
-  }
-  else if(user.role === 'ADMIN'){
+    if(user===null){
+      console.log(user)
+      setUrl('/auth/login')
+      return
+    }
+    if(user.role === 'CUSTOMER'){
+      setUrl('/customer')
+    }
+    else if(user.role === 'SHOPOWNER'){
+      setUrl('/shopowner')
+    }
+    else if(user.role === 'ADMIN'){
+  
+      setUrl('/admin')  }
 
-    setUrl('/admin')  }
+  
+  },[user])
 
-}
+
 
 
   return (
@@ -65,7 +69,7 @@ const route = ()=>{
       </Link>
       </div>
       <div className="account">
-      <Link onClick={()=>route()} to={url} className='acc'>
+      <Link to={url} className='acc'>
         <FcBusinesswoman/>
       </Link>
 
@@ -95,7 +99,7 @@ const route = ()=>{
       <Link to='/fms'>FIND SUPPLEMENT</Link>
       </div>
       <div className="">
-      <Link onClick={()=>route()} to={url} className=''>
+      <Link to={url} className=''>
         ACCOUNT
       </Link>
       </div>

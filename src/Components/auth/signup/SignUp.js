@@ -4,22 +4,34 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {emailValidator, usernameValidator, passwordValidator, phoneValidator} from '../Validator'
+import {emailValidator, nameValidator, passwordValidator, phoneValidator} from '../Validator'
 import axios from 'axios';
 function SignUp() {
     const navigate=useNavigate()
     const [form, setForm]=useState({
-        username:'',
+        name:'',
         email:'',
         phone:'',
         password:'',
+        deliveryLocation:'',
+
     });
     const [errors, setErrors]=useState({
-        email:true,
-        phone:true,
-        username:true,
-        password:true
+        email:false,
+        phone:false,
+        name:false,
+        password:false
     })
+    /*
+        "name": "customer2",
+    "password": "admin",
+    "email": "customer@pride.com",
+    "deliveryLocation": "Nairobi",
+    "role": "CUSTOMER",
+    "phone": "254742734120",
+    "mpesaNumber": "254742734120",
+    "skincode": "101"
+*/
     const notify = (err) => {
         if(err===""){
 
@@ -41,22 +53,20 @@ function SignUp() {
 
       const onSubmitForm = e => {
         e.preventDefault();
-        console.log(errors)
-        console.log(errors.email)
         if(errors.email){
             notify("Error in email")
             return
 
         }
         else
-        if(errors.username){
-            notify('  Error in username')
+        if(errors.name){
+            notify('  Error in name')
             return
 
 
         }else
         if(errors.phone){
-            notify('  Error in username')
+            notify('  Error in name')
             return
 
 
@@ -67,7 +77,10 @@ function SignUp() {
             return
         }
             else{
-                axios.post('http://localhost:8080/users/register', form).then(
+                let newForm = form;
+                newForm.mpesaNumber=form.phone;
+                console.log(newForm)
+                axios.post('http://localhost:8080/users/customer', newForm).then(
                     (res)=>{
                             navigate('/auth/login')                    
                     }
@@ -90,7 +103,7 @@ function SignUp() {
         <h3>Create account</h3>
         <p>Or use email for registeration</p>
         <div>
-            <input name='username' onBlur={()=>{notify(usernameValidator(form.username, errors, setErrors))}} value={form.username} onChange={onUpdateField} placeholder='username' type="text" />
+            <input name='name' onBlur={()=>{notify(nameValidator(form.name, errors, setErrors))}} value={form.name} onChange={onUpdateField} placeholder='name' type="text" />
         </div>
         <div>
             <input name='email' onBlur={()=>{notify(emailValidator(form.email, errors, setErrors))}} value={form.email} onChange={onUpdateField} placeholder='email' type="text" />

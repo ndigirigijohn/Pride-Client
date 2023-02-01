@@ -75,7 +75,7 @@ export const phoneValidator=(phone, errors, setErrors)=>{
       return "";
 }
 
-export const usernameValidator=(username,errors, setErrors)=>{
+export const nameValidator=(username,errors, setErrors)=>{
   let err=errors;
     if (username==="") {
       err.username=true;

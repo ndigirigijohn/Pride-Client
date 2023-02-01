@@ -33,21 +33,21 @@ function Customer() {
 
           
             <div>
-              <Link to='/accounts/ordersc'><BiCube/><p>Orders</p><BiChevronRight/></Link>
+              <Link to='/customer/ordersc'><BiCube/><p>Orders</p><BiChevronRight/></Link>
             </div>
             <div>
-              <Link to='/accounts/favorites'><AiOutlineHeart/><p>Favorites</p><BiChevronRight/></Link>
-            </div>
-
-            <div>
-              <Link to='/accounts/personaldata'><BsPerson/><p>Personal data</p><BiChevronRight/></Link>
+              <Link to='/customer/favorites'><AiOutlineHeart/><p>Favorites</p><BiChevronRight/></Link>
             </div>
 
             <div>
-              <Link to='/accounts/dataupdate'><AiOutlineLock/><p>Update Data</p><BiChevronRight/></Link>
+              <Link to='/customer/personaldata'><BsPerson/><p>Personal data</p><BiChevronRight/></Link>
+            </div>
+
+            <div>
+              <Link to='/customer/dataupdate'><AiOutlineLock/><p>Update Data</p><BiChevronRight/></Link>
             </div>
             <div>
-              <Link to='/accounts/mysupplements'><CgProductHunt/><p>My supplements</p><BiChevronRight/></Link>
+              <Link to='/customer/mysupplements'><CgProductHunt/><p>My supplements</p><BiChevronRight/></Link>
             </div>
 
             <div>

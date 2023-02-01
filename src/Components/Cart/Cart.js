@@ -12,8 +12,7 @@ import { useNavigate} from 'react-router-dom';
 import axios from 'axios'
 
 function Cart() {
-  // let userCode=JSON.parse(localStorage.getItem('skincode'))
-  let userCode=JSON.parse(localStorage.getItem('skincode'))||null
+  let userCode=(localStorage.getItem('skincode'))
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -57,7 +56,9 @@ useEffect(()=>{
   dispatch(changeCount(count))
 
 
-  if(userCode!=="" && userCode!==null){
+  if(userCode!=="" && userCode!==null&&userCode!=='undefined'){
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    userCode= JSON.parse(userCode)
     axios.get(`http://localhost:8080/codes/${userCode}`).then((res)=>{
       console.log(res.data.products)
       setName("show")
