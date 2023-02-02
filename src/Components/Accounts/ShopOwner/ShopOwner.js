@@ -1,5 +1,5 @@
 import React from 'react'
-import './Admin.css'
+import './ShopOwner.scss'
 import { Link, Outlet, } from 'react-router-dom';
 import {MdSpaceDashboard } from 'react-icons/md';
 import {AiOutlineShoppingCart } from 'react-icons/ai';
@@ -22,22 +22,16 @@ function Admin() {
         <h4><Link to='/'>Pride</Link></h4>
         <div className="content">
           <div>
-            <Link to='/admin/dashboard'><MdSpaceDashboard/><p>Dashboard</p></Link>
+            <Link to='/shopowner/dashboard'><MdSpaceDashboard/><p>Dashboard</p></Link>
           </div>
           <div>
-            <Link to='/admin/orders'><AiOutlineShoppingCart/><p>Orders</p></Link>
+            <Link to='/shopowner/orders'><AiOutlineShoppingCart/><p>Orders</p></Link>
           </div>
           <div>
-            <Link to='/admin/customers'><FiPieChart/><p>Customers</p></Link>
+            <Link to='/shopowner/customers'><FiPieChart/><p>Customers</p></Link>
           </div>
           <div>
-            <Link to='/admin/productsa'><RiProductHuntFill/><p>Products</p></Link>
-          </div>
-          <div>
-            <Link to='/admin/shops'><AiOutlineShop/><p>Shops</p></Link>
-          </div>
-          <div>
-            <Link to='/admin/owners'><FaPeopleCarry/><p>Shop Owners</p></Link>
+            <Link to='/shopowner/productsa'><RiProductHuntFill/><p>Products</p></Link>
           </div>
           <div>
               <Link

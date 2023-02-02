@@ -12,6 +12,7 @@ import FMS from './Components/FMS/FMS';
 //accounts
 import Customer from './Components/Accounts/Customer/Customer';
 import Admin from './Components/Accounts/Admin/Admin';
+import ShopOwner from './Components/Accounts/ShopOwner/ShopOwner';
 
 //admin routes
 import Dashboard from './Components/Accounts/Admin/Dashboard/Dashboard';
@@ -28,6 +29,14 @@ import PersonalData from './Components/Accounts/Customer/sections/PersonalData';
 import MySupplements from './Components/Accounts/Customer/sections/MySupplements';
 import DataUpdate from './Components/Accounts/Customer/sections/DataUpdate';
 import OrdersC from './Components/Accounts/Customer/sections/Orders';
+
+//shop owner routes
+import DashboardS from './Components/Accounts/ShopOwner/Dashboard/Dashboard';
+import OrdersS from './Components/Accounts/ShopOwner/Orders/Orders';
+import ProductsAS from './Components/Accounts/ShopOwner/Products/Products';
+import CustomersS from './Components/Accounts/ShopOwner/Customers/Customers';
+
+
 
 //product page
 import ProductPage from './Components/Products/ProductPage/ProductPage';
@@ -69,12 +78,6 @@ root.render(
             <Route path="/admin/owners" element={<ShopOwners/>} />
 
 
-
-
-            
-
-
-
            </Route>
             <Route path='/customer' element={<Customer/>} >
             {/* customer */}
@@ -83,6 +86,14 @@ root.render(
           <Route path='/customer/personaldata' element={<PersonalData/>}/>
           <Route path='/customer/mysupplements' element={<MySupplements/>}/>
           <Route path='/customer/dataupdate' element={<DataUpdate/>}/>
+            </Route>
+
+            <Route path='/shopowner' element={<ShopOwner/>} >
+            {/* shop owner */}
+          <Route index path='/shopowner/dashboard' element={<DashboardS/>}/>
+          <Route path='/shopowner/orders' element={<OrdersS/>}/>
+          <Route path='/shopowner/productsa' element={<ProductsAS/>}/>
+          <Route path='/shopowner/customers' element={<CustomersS/>}/>
             </Route>
 
            <Route path= '/product/:id' element={<ProductPage/>}/>
