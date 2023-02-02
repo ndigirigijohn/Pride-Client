@@ -36,7 +36,9 @@ const onUpdateField = e => {
       axios.post('http://localhost:8080/auth/login', form).then(
         (res)=>{
           localStorage.setItem('user', JSON.stringify(res.data));
-          localStorage.setItem('skincode', JSON.stringify(res.data.skincode));
+          if(res.data.skincode&&res.data.skincode!==''){
+            localStorage.setItem('skincode', JSON.stringify(res.data.skincode));
+          }
           navigate('/')
         }
       )

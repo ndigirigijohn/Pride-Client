@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import './Customer.css';
+import './Customer.scss';
 
 import AccNav from '../AccNav/AccNav';
 import { Link, Outlet } from 'react-router-dom';
 import {BiCube } from 'react-icons/bi';
-import {AiOutlineHeart } from 'react-icons/ai';
 import {BsPerson } from 'react-icons/bs';
 import {AiOutlineLock } from 'react-icons/ai';
 import {FiLogOut } from 'react-icons/fi';
@@ -35,10 +34,6 @@ function Customer() {
             <div>
               <Link to='/customer/ordersc'><BiCube/><p>Orders</p><BiChevronRight/></Link>
             </div>
-            <div>
-              <Link to='/customer/favorites'><AiOutlineHeart/><p>Favorites</p><BiChevronRight/></Link>
-            </div>
-
             <div>
               <Link to='/customer/personaldata'><BsPerson/><p>Personal data</p><BiChevronRight/></Link>
             </div>

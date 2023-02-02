@@ -8,7 +8,7 @@ import { changeCart } from "../../redux/slices/cartSlice";
 import { changeCount } from "../../redux/slices/countSlice";
 
 import { useSelector } from "react-redux";
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 import axios from 'axios'
 
 function Cart() {
@@ -20,23 +20,9 @@ function Cart() {
   const [itemsCount, setItemCount]= useState(0)
   const [pop, setPop]= useState('pop_none')
   const[processing, setProcessing]= useState(false)
-  // const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user'))
   const [userItems, setUserItems]= useState([])
   const [name, setName]= useState('none')
-  const user = {
-    "_id": "5f9f1b0b0b9b2c0017b0b2a5",
-    "name": "customer2",
-    "email": "customer2@pride.com",
-    "deliveryLocation": "Nairobi",
-    "role": "CUSTOMER",
-    "phone": "254742734120",
-    "mpesaNumber": "254742734120"
-
-}
-
-
-
-
 
 
 useEffect(()=>{
@@ -56,11 +42,10 @@ useEffect(()=>{
   dispatch(changeCount(count))
 
 
-  if(userCode!=="" && userCode!==null&&userCode!=='undefined'){
+  if(userCode!=="" && userCode!==null&&userCode!==undefined){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     userCode= JSON.parse(userCode)
     axios.get(`http://localhost:8080/codes/${userCode}`).then((res)=>{
-      console.log(res.data.products)
       setName("show")
       setUserItems(res.data.products)
     }).catch((err)=>{
@@ -116,16 +101,15 @@ const handleCheckout=()=>{
     alert("Your order is being processed")
     return
   }
+  setProcessing(true)
+
   const order={
-    "userId":user._id,
-    "name":user.name,
-    "phone":user.phone,
-    "email":user.email,
+    "customer_id":user._id,
     "count":itemsCount,
+    "subTotal":total,
     "shipping":shipping,
     "total":total+shipping,
-    "mpesaNo":user.mpesaNumber,
-    "items":cart
+    "products":cart,
 }
     console.log("ORDER", order)
 
@@ -176,7 +160,11 @@ const handleCheckout=()=>{
 
                   <p>Count</p>
               <p className='total'>Total</p>
-              <p className={name}>Matching</p>
+              {
+                !Array.isArray(userItems)?'':
+                <p className={name}>Matching</p>
+
+              }
               <button onClick={()=>{
                 removeAll()
               }} className='remove remove_all'>Remove all</button>
@@ -212,8 +200,12 @@ const handleCheckout=()=>{
                 </button>
               </div>
 
-              <p className='total'>KSH. {item.price*item.count}</p>
-              <p style={userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
+              <p className='total'>KSH. {item.price*item.count}</p>{
+                !Array.isArray(userItems)?'':
+                              <p style={userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
+
+
+              }
               <button onClick={()=>{
                 remove(item._id)
               }} className='remove'>Remove</button>
@@ -230,6 +222,9 @@ const handleCheckout=()=>{
 
 
             </div>
+            <div className="data_info">
+          <p>You can update your suplements recommendatios <Link style={{color:"#c9104e"}} to='/FMS'>here</Link></p>
+        </div>
 
           </div>
           <div className="order">

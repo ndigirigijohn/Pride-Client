@@ -18,7 +18,7 @@ function Dashboard() {
     axios.get('http://localhost:8080/users/customer')
     .then(res => setCustomerCount(res.data.length))
     .catch(err => console.log(err))
-    axios.get('/api/admin/orders/count')
+    axios.get('http://localhost:8080/orders/get/all')
     .then(res => setOrderCount(res.data.length))
     .catch(err => console.log(err))
     axios.get('http://localhost:8080/products')

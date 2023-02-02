@@ -60,3 +60,25 @@
 .acc_nav h4{
     margin-left: 30px;
 }
+
+.customer_orders{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    padding: 10px 0;
+    text-align: left;
+    overflow-y: scroll;
+    div{
+        width: 100%;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px;
+
+    }
+    .orders_head{
+        font-weight: 600;
+        font-size: 120%;
+    }
+}
