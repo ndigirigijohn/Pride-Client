@@ -17,9 +17,10 @@ import Admin from './Components/Accounts/Admin/Admin';
 import Dashboard from './Components/Accounts/Admin/Dashboard/Dashboard';
 import Orders from './Components/Accounts/Admin/Orders/Orders';
 import ProductsA from './Components/Accounts/Admin/Products/Products';
-// import Shops from './Components/Accounts/Admin/Shops/Shops';
-// import Owners from './Components/Accounts/Admin/Owners/Owners';
+import Shops from './Components/Accounts/Admin/Shops/Shops';
 import Customers from './Components/Accounts/Admin/Customers/Customers';
+import ShopOwners from './Components/Accounts/Admin/ShopOwners/ShopOwners';
+
 
 //customer routes
 import Favorites from './Components/Accounts/Customer/sections/Favorites';
@@ -64,6 +65,11 @@ root.render(
             <Route path="/admin/orders" element={<Orders/>} />
             <Route path="/admin/productsa" element={<ProductsA/>} />
             <Route path="/admin/customers" element={<Customers/>} />
+            <Route path="/admin/shops" element={<Shops/>} />
+            <Route path="/admin/owners" element={<ShopOwners/>} />
+
+
+
 
             
 
