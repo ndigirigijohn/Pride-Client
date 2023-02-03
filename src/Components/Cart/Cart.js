@@ -43,18 +43,29 @@ useEffect(()=>{
 
 
   if(userCode!=="" && userCode!==null&&userCode!==undefined){
+    if(userCode.length>2){
+    const code = JSON.parse(userCode)
+
+    console.log(code)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    axios.get(`http://localhost:8080/codes/${userCode}`).then((res)=>{
+    axios.get(`http://localhost:8080/products/code/${code}`).then((res)=>{
       setName("show")
-      setUserItems(res.data.products)
+      console.log("data",res.data, "userCode:", userCode)
+      const itemIds=res.data.map(item=>item.identifier)
+      setUserItems(itemIds)
+      
+
     }).catch((err)=>{
       console.log(err)
     })
+  }
+  return
 
   }
 
 
 },[cart, dispatch, userCode])
+console.log("userItems", userItems)
 
   const increment=(id,count )=>{
     const items=cart
@@ -201,7 +212,7 @@ const handleCheckout=()=>{
 
               <p className='total'>KSH. {item.price*item.count}</p>{
                 !Array.isArray(userItems)?'':
-                              <p style={!userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{!userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
+                              <p style={userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
 
 
               }
