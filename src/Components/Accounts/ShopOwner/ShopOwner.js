@@ -5,8 +5,6 @@ import {MdSpaceDashboard } from 'react-icons/md';
 import {AiOutlineShoppingCart } from 'react-icons/ai';
 import {FiPieChart } from 'react-icons/fi';
 import { RiProductHuntFill} from 'react-icons/ri';
-import { AiOutlineShop} from 'react-icons/ai';
-import { FaPeopleCarry} from 'react-icons/fa';
 import {FiLogOut } from 'react-icons/fi';
 
 
