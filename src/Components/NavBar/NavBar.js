@@ -4,17 +4,32 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsCartFill } from 'react-icons/bs';
 import { FcBusinesswoman } from 'react-icons/fc';
 import { BiMenu } from 'react-icons/bi';
-import {Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import {Link, useNavigate } from 'react-router-dom';
+import { useSelector ,  useDispatch} from "react-redux";
+
+
+
+import { changeProduct } from "../../redux/slices/productSlice";
+import axios from 'axios';
+
+
 
 
 
 
 function NavBar() {
+  const page = useSelector((state) => state.page);
+
   const count = useSelector((state) => state.count);
   const [over, setOver] = React.useState('none');
   const user= JSON.parse(localStorage.getItem('user'));
   const [url, setUrl] = React.useState('/auth/login');
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+
   useEffect(()=>{
 
     if(user===null){
@@ -36,6 +51,29 @@ function NavBar() {
   },[user])
 
 
+  const search = (e) => {
+    console.log(e.target.value)
+    if(e.target.value===''){
+      axios.get(`http://localhost:8080/products/page/${page}/limit/9`).then((response)=>{
+        dispatch(changeProduct(response.data))
+        navigate('/')
+      return
+    }
+    )
+    .catch((err)=>{
+      console.log(err)
+    })
+    }
+    axios.get(`http://localhost:8080/products/search/${e.target.value}`)
+    .then((res)=>{
+      dispatch(changeProduct(res.data))
+      navigate('/results')
+    })
+    .catch((err)=>{
+      console.log(err)
+    }
+    )
+  }
 
 
   return (
@@ -53,7 +91,7 @@ function NavBar() {
       <div className="search">
         <div className="search_container">
           <AiOutlineSearch/>
-          <input type={'text'} placeholder='Search...'/>
+          <input onChange={search} type={'text'} placeholder='Search...'/>
         </div>
       </div>
       <Link to='/' className="logo">

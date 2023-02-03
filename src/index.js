@@ -46,6 +46,8 @@ import Auth from './Components/auth/Auth';
 import Login from './Components/auth/login/Login';
 import SignUp from './Components/auth/signup/SignUp';
 
+import Results from './Components/Results/Results';
+
 
 
 
@@ -103,6 +105,8 @@ root.render(
         </Route>
 
         <Route path='/sequel' element={<Sequel/>}/>
+
+        <Route path='/results' element={<Results/>}/>
 
 
 

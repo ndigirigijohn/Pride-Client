@@ -5,27 +5,57 @@ import {Link, useNavigate} from 'react-router-dom'
 import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeProduct } from "../../redux/slices/productSlice";
 import { BsSearch } from 'react-icons/bs';
 
 
-
-
-//https://prideserver.herokuapp.com/code/a/z/1010
-
 function FMS() {
   const dispatch = useDispatch();
   const user=JSON.parse(localStorage.getItem('user'))
+
+
   
-
-
 
 const navigate=useNavigate();
 const [code, setCode] = useState('')
 const [flag, setFlag] = useState(false)
 const [search, setSearch] = useState("");
 const [optionsState, setOptionsState] = useState('all');
+
+const page = useSelector((state) => state.page);
+
+
+const handleSearch= (e) => {
+  e.preventDefault();
+  if(optionsState==='all'){
+    axios.get(`http://localhost:8080/products/search/${e.target.value}`).then((res)=>{
+      dispatch(changeProduct(res.data))
+      navigate(`/results`)
+    })
+
+    return
+  }
+  if(search===''){
+    axios.get(`http://localhost:8080/products/page/${page}/limit/9`).then((response)=>{
+      dispatch(changeProduct(response.data))
+      navigate(`/results`)
+    }
+    ).catch((err)=>{
+      console.log(err)
+    })
+    return
+  }
+  axios.get(`http://localhost:8080/products/category/${optionsState}/${search}`).then((response)=>{
+    dispatch(changeProduct(response.data))
+    navigate(`/results`)
+  }
+  ).catch((err)=>{
+    console.log(err)
+  })
+
+}
+
 
 
 
@@ -49,30 +79,8 @@ useEffect(()=>{
   }
 }, [code, flag, navigate, dispatch, user, optionsState])
 
-const handleSearch = event => {
-  try{
-    if(optionsState==='all'){
-      axios.get(`http://localhost:8080/products/search/${search}`).then((res)=>{
-        dispatch(changeProduct(res.data))
-        navigate(`/result/${optionsState}/${search}`)
-
-      })
-    
-    }
-    axios.get(`http://localhost:8080/products/search/${optionsState}/${search}`).then((response)=>{
-      dispatch(changeProduct(response.data))  ;
-      navigate(`/result/${optionsState}/${search}`)
-    })
-  
-
-  }
-  catch(err){
-    console.log(err)
-
-  };
 
 
-}
 
 const SEARCH=<div className='fms_div'>
 <p>Enter ingridient or the name of your product to search</p>
@@ -99,12 +107,12 @@ const SEARCH=<div className='fms_div'>
 
 <input 
           onKeyDown={(e)=>{
-            e.key==='Enter' && handleSearch()          
+            e.key==='Enter' && handleSearch(e)          
           }}
            onChange={(e) => {
             setSearch(e.target.value)
         }} type={'text'} placeholder='Search...'/>
-        <div onClick={()=>{handleSearch()}} className="search_icon">
+        <div onClick={(e)=>{handleSearch(e)}} className="search_icon">
         <BsSearch  />
 
         </div>

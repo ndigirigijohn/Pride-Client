@@ -45,11 +45,12 @@ function Products() {
             })
     }
 
+    const myRef = React.createRef(null);
 
 
 
   return (
-    <div className='Products'>
+    <div  ref={myRef} className='Products'>
         <div className="contents">
         {
           Array.isArray(products)&&products.length>0?

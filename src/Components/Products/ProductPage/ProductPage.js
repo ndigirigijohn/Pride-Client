@@ -9,14 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeCart } from "../../../redux/slices/cartSlice";
 import { changeCount } from "../../../redux/slices/countSlice";
 
+import { Rating } from 'react-simple-star-rating'
 
 
 
 
 function ProductPage() {
+    const uid = JSON.parse(localStorage.getItem("user"))
     const [text, setText]=useState("Add to Cart")
     const cart = useSelector((state) => state.cart);
     const Allcount = useSelector((state) => state.count);
+
+    const [productRating, setProductRating] = useState(0)
+    const [ratingCount, setRatingCount] = useState(0)
+    const [rFlag, setRFlag] = useState(true)
 
 
     const {id} = useParams()
@@ -25,11 +31,47 @@ function ProductPage() {
 
     const dispatch = useDispatch();
 
+    const [rating, setRating] = useState(0)
+
+    // Catch Rating value
+    const handleRating = (rate) => {
+      setRating(rate)
+    }
+
+    const [comment, setComment] = useState("")
+    
+    const handleComment = (e) => {
+        console.log(comment, rating)
+        if(uid===null){
+            alert("Please login to rate")
+            return
+        }
+        axios.post("http://localhost:8080/ratings", {
+            userId: uid._id,
+            productId: id,
+            rating: rating,
+            comment: comment
+        }).then((res)=>{
+            console.log(res)
+            alert("Rating added")
+        }
+        ).catch((err)=>{
+            console.log(err)
+        }
+
+        )
+        //reset
+        setComment("")
+        setRating(0)
+    }
+
+
+
 
     
     const [product, setProduct] = useState(false)
     useEffect(()=>{
-            window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
         
         // console.log("id", id)
         axios.get(`http://localhost:8080/products/${id}`).then(
@@ -40,7 +82,29 @@ function ProductPage() {
         .catch((err)=>{
             console.log(err)
         })
+
+        axios.get(`http://localhost:8080/ratings/pid/${id}`).then(
+            (res)=>{
+                if(res.data.length===0){
+                    setRFlag(true)
+                    return
+                }
+                setRFlag(false)
+                let sum=0
+                res.data.forEach((item)=>{
+                    sum+=item.rating
+                })
+                setProductRating(sum/res.data.length)
+                setRatingCount(res.data.length)
+            }
+        )
+        .catch((err)=>{
+            console.log(err)
+        }
+        )
+
     }, [id])
+
 
     const addToCart=()=>{
         let cart1=cart
@@ -116,6 +180,19 @@ function ProductPage() {
                 </div>
                 <div className="current_rating">
                     <h6>CURRENT RATINGS</h6>
+                    <div className="rating">
+                        {
+                            rFlag?
+                            <h1>No ratings yet</h1>
+                            :
+                            <div>
+                                <h1>{productRating}</h1>
+                                <h6>based on {ratingCount} ratings</h6>
+                            </div>
+
+                        }
+
+                        </div>
                 </div>
                 <div className="price">
                 <h2>
@@ -157,6 +234,13 @@ function ProductPage() {
                 </div>
                 <div className="rate">
                     <h6>RATE NOW</h6>
+                    <Rating
+        onClick={handleRating}
+      />
+      <div className="comment">
+        <input onChange={(e)=>{setComment(e.target.value)}} type="text" />
+        <button onClick={handleComment}>Comment</button>
+      </div>
                 </div>
             </div>
             </div>

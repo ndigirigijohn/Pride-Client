@@ -44,7 +44,6 @@ useEffect(()=>{
 
   if(userCode!=="" && userCode!==null&&userCode!==undefined){
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    userCode= JSON.parse(userCode)
     axios.get(`http://localhost:8080/codes/${userCode}`).then((res)=>{
       setName("show")
       setUserItems(res.data.products)
@@ -202,7 +201,7 @@ const handleCheckout=()=>{
 
               <p className='total'>KSH. {item.price*item.count}</p>{
                 !Array.isArray(userItems)?'':
-                              <p style={userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
+                              <p style={!userItems.includes(item.identifier)?{color:"green"}:{"color":"red"}} className={name}>{!userItems.includes(item.identifier)?"Matched":"Mismatched"}</p>
 
 
               }

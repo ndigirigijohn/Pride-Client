@@ -11,13 +11,11 @@ function Feedback() {
   const [form, setForm]=useState({
     name:'',
     email:'',
-    product:'',
     message:'',
 });
 const [errors, setErrors] = useState({
   name: '',
   email: '',
-  product: '',
   message: ''
 })
 const notify = () => {
@@ -39,11 +37,7 @@ const validateForm = (fieldName, value) => {
           formErrors.email=err;
           setErrors(formErrors) 
          break;
-         case 'product':
-          err= value.length<3?'Product name must be atleast 3 characters':''
-          formErrors.product=err;
-          setErrors(formErrors)
-         break;
+   
 
          case 'message':
           err= value.length<9?'Message must be longer than 9 characters':''
@@ -102,11 +96,6 @@ const onUpdateField = e => {
                 validateForm(e.target.name,e.target.value)
             } } name="email" type="text" placeholder="Email"/>
             <div style={{color:"red"}} className="error">{errors.email}</div>
-            <input onChange={(e)=>{
-                onUpdateField(e);
-                validateForm(e.target.name,e.target.value)
-            } } name="product" type="text" placeholder="Product you are reviewing"/>
-            <div style={{color:"red"}} className="error">{errors.product}</div>
 
           
             <textarea placeholder='Message' onChange={(e)=>{
