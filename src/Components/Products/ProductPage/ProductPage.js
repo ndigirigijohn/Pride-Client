@@ -23,6 +23,10 @@ function ProductPage() {
     const [productRating, setProductRating] = useState(0)
     const [ratingCount, setRatingCount] = useState(0)
     const [rFlag, setRFlag] = useState(true)
+    const [comments, setComments] = useState(false)
+    const [cc, setCc] = useState('show')
+
+
 
 
     const {id} = useParams()
@@ -102,6 +106,17 @@ function ProductPage() {
             console.log(err)
         }
         )
+
+        axios.get(`http://localhost:8080/ratings/pid/${id}`).then(
+            (res)=>{
+                setComments(res.data)
+            }
+        )
+        .catch((err)=>{
+            console.log(err)
+        }
+        )
+
 
     }, [id])
 
@@ -241,6 +256,29 @@ function ProductPage() {
         <input onChange={(e)=>{setComment(e.target.value)}} type="text" />
         <button onClick={handleComment}>Comment</button>
       </div>
+      <button onClick={()=>{
+        cc==="show"?
+        setCc("none")
+        :
+        setCc("show")
+      }}>View Comments</button>
+      <div className={cc}>
+        {comments?
+comments.map((item, index)=>{
+    return(
+        <div className="comment">
+            <h6>comment {index}</h6>
+            <h6>{item.comment}</h6>
+            <h6>{item.rating}</h6>
+        </div>
+    )}
+        )
+        :
+        <h1>No comments yet</h1>}
+        
+
+      </div>
+
                 </div>
             </div>
             </div>
